@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  become: true
+  become_method: sudo
+  roles:
+    - ansible-role-root_colored_prompt
+...
