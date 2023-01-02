@@ -62,7 +62,7 @@ MIT
 
 ## Author Information
 
-(&copy;) Andre Lohmann (and others) 2022
+&copy; Andre Lohmann (and others) 2022
 
 https://github.com/andrelohmann
 
