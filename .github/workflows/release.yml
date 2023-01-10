@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  # the 1st condition
+  workflow_run:
+    # some older repositories still use master, all newer ones use main
+    workflows: ["molecule"]
+    branches: [main, master]
+    types:
+      - completed
+  pull_request:
+    branches:
+      # some older repositories still use master, all newer ones use main
+      - master
+      - main
+
+# https://github.com/marketplace/actions/github-tag-with-semantic-versioning
+# https://medium.com/@AranT/auto-tagging-and-using-semantic-versioning-with-github-actions-e40188d12cf4
+# https://github.com/anothrNick/github-tag-action
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run
+# https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: test
+          molecule_args: -d docker
+          molecule_working_dir: andrelohmann/ansible-role-root_colored_prompt
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

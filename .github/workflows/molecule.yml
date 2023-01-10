@@ -3,11 +3,15 @@ name: Molecule
 on:
   push:
     branches:
+      # some older repositories still use master, all newer ones use main
       - master
+      - main
       - "feature/*"
   pull_request:
     branches:
+      # some older repositories still use master, all newer ones use main
       - master
+      - main
 
 jobs:
   molecule:

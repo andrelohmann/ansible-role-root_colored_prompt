@@ -1,5 +1,5 @@
 {
-  "name": "Your Definition Name Here (Community)",
+  "name": "Molecule Dev Container",
   "build": {
     "dockerfile": "Dockerfile"
   },

@@ -42,4 +42,4 @@ RUN pip install --upgrade pip \
     && export PATH=$PATH:/root/.local/bin \
     && ansible-galaxy collection install community.general
 
-CMD    ["/bin/bash"]
+CMD ["/bin/bash"]

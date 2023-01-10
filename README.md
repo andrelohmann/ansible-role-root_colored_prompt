@@ -27,28 +27,66 @@ This role will exeplarily showcase the perfect development environment for ansib
 
 https://thedatabaseme.de/2022/01/17/automated-testing-your-ansible-role-with-molecule-and-github-actions/
 
-  * Ubuntu Server minimized installed to the server
-  * User k8s is created and has sudo permissions without password
-  * Add your public key for remote access
-  * Install ansible
+  * Virtualbox + Vagrant installed (only necessary, if the role should be tested with vargant as well)
+  * Docker Desktop
+  * VisualStudioCode + remote extensionpack (dependencies are defined within .vscode/extensions.json)
 
-```
-apt update && apt install python3-pip git -yqq
-# Ansible Version 2.11 is important for kubespray
-pip install --upgrade ansible-core~=2.11.0
-```
+### Development-Setup
 
-Run Commands
+This ansible role is developed using molecule for testing. It's development is based on visual studio code and a regarding development container, solving all dependencies in terms of necessary tools (ansible, linter, molecule).
+
+The role will be tested on three ubuntu containers (bionic, focal, jammy).
+
+To startup the molecule test containers from within the development container, the docker socket needs to be bind mounted into the development container.
+
+#### Important folders and files
+
+##### .devcontainer
+
+  * Defines the Dockerfile for the development container
+  * Configures the development container startup (e.g. bind mount docker socket)
+
+##### molecule/default/Dockerfile.js
+
+  * used as a template for all platforms defined in molecule/default/molecule.yml
+  * prepares the environments to support systemd services (necessary for some ansible roles acting on systemd)
+  * installs all requirements to run ansible against the derived container
+  * the file is aligned with the attributes of the platforms in molecule/default/molecule.yml
+  * for more information - study the molecule documentation
+
+### Usage
+
+  * change to the root directory of your role and start vscode
+```
+code .
+```
+  * from within the development container you can use the following run commands
 ```
 molecule lint
 molecule create
 molecule test
 ```
 
-### Installation
+### Build and Release process
 
-  * login as k8s
-  * Clone the repository
+The ansible role defines a bunch of github workflows to run molecule test and release management
+
+## Reusing the template
+
+Reusing the template for new roles:
+
+  * Align the workflows (branches)
+  * Align meta/main.yml
+  * Align molecule/default/converge.yml
+  * Align molecule/default/requirements.yml
+  * Align molecule/default/verify.yml (write ansible verification code to test the results of the role)
+  * Align vagrant/config.yaml (rolename)
+  * Align vagrant/playbook.yml
+  * Align vagrant/README.md
+  * Align vagrant/requirements.yml
+  * Align LICENSE
+  * Align README.md
+  * requirements.yml
 
 ## Example Playbook
 
