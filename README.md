@@ -9,7 +9,7 @@ Simple ansible role to switch on the colored prompt for the root user
 
 ### Special purpose
 
-This role will exemplarily showcase the perfect development environment for ansible role.
+This role will exemplarily showcase the perfect development environment for ansible roles.
 
   * yamllint
   * ansible-lint
@@ -18,7 +18,7 @@ This role will exemplarily showcase the perfect development environment for ansi
   * gitlab action
   * update ansible-galaxy
   * show build status
-  * auto version-up (?)
+  * auto version-up
   * test within vagrant (for development purose)
   * test with molecule (inside or outside vagrant)
   * test against docker container
