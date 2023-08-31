@@ -2,6 +2,14 @@
 # Based on ansible-lint config
 extends: default
 
+yaml-files:
+- '*.yaml'
+- '*.yml'
+- '.yamllint'
+
+ignore:
+- .vagrant
+
 rules:
   braces:
     max-spaces-inside: 1
@@ -15,23 +23,39 @@ rules:
   commas:
     max-spaces-after: -1
     level: error
-  comments: disable
-  comments-indentation: disable
-  document-start: disable
+  comments:
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 2
+  comments-indentation: {}
+  document-start:
+    present: true
+    level: warning
+  document-end:
+    present: true
+    level: warning
   empty-lines:
-    max: 3
+    max: 1
     level: error
+  empty-values:
+    forbid-in-block-mappings: true
+    forbid-in-flow-mappings: true
   hyphens:
+    max-spaces-after: 1
     level: error
   indentation:
     spaces: consistent
     indent-sequences: consistent
     check-multi-line-strings: true
+    level: error
   key-duplicates: enable
   line-length: disable
   new-line-at-end-of-file: disable
   new-lines:
     type: unix
-  trailing-spaces: disable
-  truthy: disable
+  quoted-strings: disable
+  trailing-spaces: {}
+  truthy:
+    allowed-values: ['true', 'false']
+    check-keys: false
 ...

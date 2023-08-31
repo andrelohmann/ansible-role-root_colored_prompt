@@ -5,6 +5,20 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
+
+  - name: "Searching for force_color_prompt"
+    lineinfile:
+      path: /root/.bashrc
+      line: 'force_color_prompt=yes'
+      state: present
+    check_mode: true
+    register: presence
+
+  - name: "sample task in case the String present in the file"
+    debug:
+      msg: "{{ presence }}"
+
+  - name: Assert presence is unchanged
     ansible.builtin.assert:
-      that: true
+      that: presence.changed == false
+...

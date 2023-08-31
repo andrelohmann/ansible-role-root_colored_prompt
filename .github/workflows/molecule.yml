@@ -1,3 +1,4 @@
+---
 name: Molecule
 
 on:
@@ -23,12 +24,12 @@ jobs:
         with:
           path: "${{ github.repository }}"
 
-      #- name: Run ansible-lint
-      #  # replace `main` with any valid ref, or tags like `v6`
-      #  uses: ansible/ansible-lint-action@main
-      #  # optional:
-      #  # with:
-      #  #   path: "playbooks/"  # <-- only one value is allowed
+      # - name: Run ansible-lint
+      #   # replace `main` with any valid ref, or tags like `v6`
+      #   uses: ansible/ansible-lint-action@main
+      #   # optional:
+      #   # with:
+      #   #   path: "playbooks/"  # <-- only one value is allowed
 
       - name: Install dependencies
         run: |
@@ -36,6 +37,9 @@ jobs:
           pip install ansible ansible-lint yamllint
       - name: Lint playbook
         run: |
+          pwd
+          ls -al
+          yamllint --version
           yamllint .
           ansible-lint .
 
@@ -47,3 +51,4 @@ jobs:
           molecule_working_dir: andrelohmann/ansible-role-root_colored_prompt
         env:
           ANSIBLE_FORCE_COLOR: '1'
+...

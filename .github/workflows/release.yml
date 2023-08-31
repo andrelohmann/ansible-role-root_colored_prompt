@@ -1,3 +1,4 @@
+---
 name: Release
 
 on:
@@ -36,3 +37,4 @@ jobs:
           molecule_working_dir: andrelohmann/ansible-role-root_colored_prompt
         env:
           ANSIBLE_FORCE_COLOR: '1'
+...
