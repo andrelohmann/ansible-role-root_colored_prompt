@@ -31,12 +31,12 @@ jobs:
 
     # https://github.com/marketplace/actions/github-tag-with-semantic-versioning
     - name: Bump version and push tag
-        uses: hennejg/github-tag-action@v4.3.1
-        with:
-          dry_run: true
-          default_bump: patch
-          tag_prefix: v
-          release_branches: master,main
-          create_annotated_tag: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      uses: hennejg/github-tag-action@v4.3.1
+      with:
+        dry_run: true
+        default_bump: patch
+        tag_prefix: v
+        release_branches: master,main
+        create_annotated_tag: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 ...
