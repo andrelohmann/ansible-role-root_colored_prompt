@@ -36,9 +36,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install ansible ansible-lint yamllint
       - name: Lint playbook
+        working-directory: ${{ github.repository }}
         run: |
-          echo ${{ github.repository }}
-          cd ${{ github.repository }}
+          #echo ${{ github.repository }}
+          #cd ${{ github.repository }}
           pwd
           ls -al
           yamllint --version
