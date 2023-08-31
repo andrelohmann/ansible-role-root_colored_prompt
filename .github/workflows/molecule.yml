@@ -4,11 +4,11 @@ name: Molecule
 on:
   push:
     branches:
-    # some older repositories still use master, all newer ones use main
     - "feature/*"
-  pull_request:
-    branches:
-    # some older repositories still use master, all newer ones use main
+    - "fix/*"
+    - "hotfix/*"
+    - "release/*"
+    - "major/*"
     - master
     - main
 

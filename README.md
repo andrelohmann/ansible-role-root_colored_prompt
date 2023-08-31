@@ -70,7 +70,51 @@ molecule test
 
 ### Build and Release process
 
-The ansible role defines a bunch of github workflows to run molecule test and release management
+The ansible role defines a bunch of github workflows to run molecule test and release management.
+
+The release management requires a handful of settings.
+
+#### Protecting the master/main branch
+
+  * Settings -> Branches -> Add branch protection rule
+  * Branch pattern name -> main or mster (depending on your default branch)
+  * Protect matching branches -> chek "Require a pull request before merging"
+  * "Require approvals" can be individually handled as required
+
+#### Give read and write permissions to GITHUB_TOKEN
+
+  * Settings -> Actions -> General -> Workflow permissions -> read and write permissions
+
+#### Commit messages
+
+Commit messages should follow a special format to achieve a patch, minor or major semantic versioning update.
+
+##### patch
+
+0.0.x
+
+```
+fix(single_word): description
+```
+
+##### minor
+
+0.x.0
+
+```
+feat(single_word): description
+```
+
+##### major
+
+x.0.0
+
+```
+perf(single_word): description
+BREAKING CHANGE: describing the breaking change
+```
+
+It's absolutely important, that "BREAKING CHANGE: " is mentioned in the second+ line. On single line commit messages, the major version update will be ignored.
 
 ## Reusing the template
 
