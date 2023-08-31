@@ -6,15 +6,10 @@ on:
   workflow_run:
     # some older repositories still use master, all newer ones use main
     workflows: ["molecule"]
-    branches: [main, master, "feature/*"]
+    branches:
+    - 'feature/**'
     types:
     - completed
-  push:
-    branches:
-    # some older repositories still use master, all newer ones use main
-    - master
-    - main
-    - "feature/*"
 
 # https://github.com/marketplace/actions/github-tag-with-semantic-versioning
 # https://medium.com/@AranT/auto-tagging-and-using-semantic-versioning-with-github-actions-e40188d12cf4

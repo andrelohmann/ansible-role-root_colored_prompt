@@ -9,11 +9,6 @@ on:
     branches: [main, master]
     types:
     - completed
-  pull_request:
-    branches:
-    # some older repositories still use master, all newer ones use main
-    - master
-    - main
 
 # https://github.com/marketplace/actions/github-tag-with-semantic-versioning
 # https://medium.com/@AranT/auto-tagging-and-using-semantic-versioning-with-github-actions-e40188d12cf4
