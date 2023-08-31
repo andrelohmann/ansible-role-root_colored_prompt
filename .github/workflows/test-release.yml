@@ -1,19 +1,20 @@
 ---
-name: Release
+name: Test Release
 
 on:
   # the 1st condition
   workflow_run:
     # some older repositories still use master, all newer ones use main
     workflows: ["molecule"]
-    branches: [main, master]
+    branches: [main, master, "feature/*"]
     types:
     - completed
-  pull_request:
+  push:
     branches:
     # some older repositories still use master, all newer ones use main
     - master
     - main
+    - "feature/*"
 
 # https://github.com/marketplace/actions/github-tag-with-semantic-versioning
 # https://medium.com/@AranT/auto-tagging-and-using-semantic-versioning-with-github-actions-e40188d12cf4
@@ -36,7 +37,7 @@ jobs:
           dry_run: true
           default_bump: patch
           tag_prefix: v
-          release_branches: master,main
+          release_branches: master,main,feature/*
           create_annotated_tag: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ...

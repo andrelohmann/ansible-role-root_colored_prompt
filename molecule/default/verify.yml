@@ -14,10 +14,6 @@
     check_mode: true
     register: presence
 
-  - name: "sample task in case the String present in the file"
-    debug:
-      msg: "{{ presence }}"
-
   - name: Assert presence is unchanged
     ansible.builtin.assert:
       that: presence.changed == false
