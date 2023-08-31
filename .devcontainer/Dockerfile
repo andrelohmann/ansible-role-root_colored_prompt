@@ -1,6 +1,6 @@
 FROM ubuntu:jammy
 
-ENV pip_packages "ansible-core ansible-lint yamllint molecule[lint,docker] docker testinfra"
+ENV pip_packages "ansible-core ansible-lint yamllint molecule-plugins[docker] docker testinfra"
 
 # Fix for https://github.com/pypa/pip/issues/10219
 ARG LANG="en_US.UTF-8"

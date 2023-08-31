@@ -9,7 +9,7 @@ Simple ansible role to switch on the colored prompt for the root user
 
 ### Special purpose
 
-This role will exeplarily showcase the perfect development environment for ansible role.
+This role will exemplarily showcase the perfect development environment for ansible role.
 
   * yamllint
   * ansible-lint
@@ -62,7 +62,8 @@ code .
 ```
   * from within the development container you can use the following run commands
 ```
-molecule lint
+yamllint .
+ansible-lint .
 molecule create
 molecule test
 ```

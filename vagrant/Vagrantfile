@@ -7,16 +7,14 @@ current_dir    = File.dirname(File.expand_path(__FILE__))
 configs        = YAML.load_file("#{current_dir}/config.yaml")
 vagrant_config = configs['configs']
 
-#require necessary plugins
-required_plugins = %w( vagrant-vbguest )
-required_plugins.each do |plugin|
-  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
-end
-
 Vagrant.configure(2) do |config|
 
+  config.vagrant.plugins = ["vagrant-vbguest"]
+
   config.vm.define "box" do |b|
+
     b.vm.box = "ubuntu/jammy64" # 22.04
+
     b.vm.provider "virtualbox" do |vb|
       vb.memory = vagrant_config['memory']
       vb.cpus = vagrant_config['cpus']
@@ -58,7 +56,7 @@ Vagrant.configure(2) do |config|
     end
 
     # Install molecule and its dependencies
-    b.vm.provision "shell", inline: "pip install --user --upgrade --no-warn-script-location ansible-lint yamllint molecule[lint,docker] docker testinfra", privileged: false
+    b.vm.provision "shell", inline: "pip install --user --upgrade --no-warn-script-location ansible-lint yamllint molecule-plugins[docker] docker testinfra", privileged: false
     b.vm.provision "shell", inline: "echo export PATH=$PATH:/home/vagrant/.local/bin >> /home/vagrant/.bashrc", privileged: false
 
   end

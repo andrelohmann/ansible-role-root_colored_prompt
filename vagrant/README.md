@@ -20,5 +20,7 @@ The vagrant role will be applied automatically during the vagrant up process.
 
 ```
 cd /etc/ansible/roles/ansible-role-root_colored_prompt
+yamllint .
+ansible-lint .
 molecule test
 ```

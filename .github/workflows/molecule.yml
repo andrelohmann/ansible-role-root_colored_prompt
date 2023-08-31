@@ -16,11 +16,19 @@ on:
 jobs:
   molecule:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
+
+      - name: Run ansible-lint
+        # replace `main` with any valid ref, or tags like `v6`
+        uses: ansible/ansible-lint-action@main
+        # optional:
+        # with:
+        #   path: "playbooks/"  # <-- only one value is allowed
 
       - name: Molecule
         uses: gofrolist/molecule-action@v2
