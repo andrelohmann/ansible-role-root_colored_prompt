@@ -36,7 +36,7 @@ jobs:
       with:
         dry_run: true
         default_bump: patch
-        tag_prefix: v
+        tag_prefix: ""
         release_branches: master,main,feature/*
         create_annotated_tag: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
