@@ -2,18 +2,9 @@
 name: Molecule
 
 on:
-  push:
-    branches:
-    - "feature/*"
-    - "fix/*"
-    - "hotfix/*"
-    - "release/*"
-    - "major/*"
-    - master
-    - main
-  # Run the tests scheduled on every friday, 15:12 UTC
-  schedule:
-  - cron: '12 15 * * 5'
+  # Tiis workflow will act as an includable module
+  # it will be called by the scheduled workflow and the test workflow
+  workflow_call:
 
 jobs:
   molecule:
