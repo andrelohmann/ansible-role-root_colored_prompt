@@ -1,10 +1,9 @@
 ---
 name: Molecule
 
-on:
-  # Tiis workflow will act as an includable module
-  # it will be called by the scheduled workflow and the test workflow
-  workflow_call:
+# Tiis workflow will act as an includable module
+# it will be called by the scheduled workflow and the test workflow
+on: workflow_call
 
 jobs:
   molecule:
