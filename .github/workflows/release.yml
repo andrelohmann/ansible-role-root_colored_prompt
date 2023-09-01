@@ -5,7 +5,7 @@ on:
   # the 1st condition
   workflow_run:
     # some older repositories still use master, all newer ones use main
-    workflows: ['Molecule']
+    workflows: ['Test']
     branches:
     - main
     - master
@@ -14,23 +14,24 @@ on:
 
 jobs:
   release:
-    #if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: "${{ github.repository }}"
+        path: ${{ github.repository }}
 
     # https://github.com/mathieudutour/github-tag-action
+    # https://github.com/anothrNick/github-tag-action <- might be an option too
     - name: Bump version and push tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.1
       with:
-        github_token: "${{ secrets.GITHUB_TOKEN }}"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         create_annotated_tag: true
         release_branches: master,main
-        #dry_run: true
+        # dry_run: true
 
     - name: Create a GitHub release
       uses: ncipollo/release-action@v1
@@ -43,6 +44,4 @@ jobs:
       uses: robertdebock/galaxy-action@1.2.0
       with:
         galaxy_api_key: "${{ secrets.GALAXY_API_KEY }}"
-
-    # https://github.com/anothrNick/github-tag-action <- might be an option too
 ...

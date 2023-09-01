@@ -1,19 +1,9 @@
 ---
 name: Molecule
 
-on:
-  push:
-    branches:
-    - "feature/*"
-    - "fix/*"
-    - "hotfix/*"
-    - "release/*"
-    - "major/*"
-    - master
-    - main
-  # Run the tests scheduled on every friday
-  schedule:
-  - cron: '12 8 * * 5'
+# Tiis workflow will act as an includable module
+# it will be called by the scheduled workflow and the test workflow
+on: workflow_call
 
 jobs:
   molecule:
@@ -23,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: "${{ github.repository }}"
+        path: ${{ github.repository }}
 
     - name: Install dependencies
       run: |
@@ -41,7 +31,7 @@ jobs:
       with:
         molecule_command: test
         molecule_args: -d docker
-        molecule_working_dir: andrelohmann/ansible-role-root_colored_prompt
+        molecule_working_dir: ${{ github.repository }}
       env:
         ANSIBLE_FORCE_COLOR: '1'
 ...
