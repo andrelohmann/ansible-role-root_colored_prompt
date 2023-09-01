@@ -11,6 +11,9 @@ on:
     - "major/*"
     - master
     - main
+  # Run the tests scheduled on every friday
+  schedule:
+  - cron: '12 8 * * 5'
 
 jobs:
   molecule:

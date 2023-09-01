@@ -14,7 +14,7 @@ cd vagrant
 vagrant up
 ```
 
-The vagrant role will be applied automatically during the vagrant up process.
+The ansible role will be applied automatically during the vagrant up process.
 
 ### Test with molecule from inside vagrant
 
