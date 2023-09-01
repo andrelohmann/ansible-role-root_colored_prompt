@@ -9,7 +9,7 @@ Simple ansible role to switch on the colored prompt for the root user
 
 ### Special purpose
 
-This role will exemplarily showcase the perfect development environment for ansible role.
+This role will exemplarily showcase the perfect development environment for ansible roles.
 
   * yamllint
   * ansible-lint
@@ -18,7 +18,7 @@ This role will exemplarily showcase the perfect development environment for ansi
   * gitlab action
   * update ansible-galaxy
   * show build status
-  * auto version-up (?)
+  * auto version-up
   * test within vagrant (for development purose)
   * test with molecule (inside or outside vagrant)
   * test against docker container
@@ -115,6 +115,14 @@ BREAKING CHANGE: describing the breaking change
 ```
 
 It's absolutely important, that "BREAKING CHANGE: " is mentioned in the second+ line. On single line commit messages, the major version update will be ignored.
+
+#### Add GALAXY_API_KEY secret
+
+  * Authenticate yourself with your github account at https://galaxy.ansible.com/.
+  * Fetch galaxy api key from Preferences -> API Key
+  * Open your github role repository
+  * Settings -> Secrets and variables -> Actions -> New repository secret
+  * Use "GALAXY_API_KEY" as key and the copied galaxy API key as value
 
 ## Reusing the template
 
