@@ -11,6 +11,9 @@ on:
     - "major/*"
     - master
     - main
+  # Run the tests scheduled on every friday, 15:12 UTC
+  schedule:
+  - cron: '12 15 * * 5'
 
 jobs:
   molecule:
@@ -20,7 +23,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: "${{ github.repository }}"
+        path: ${{ github.repository }}
 
     - name: Install dependencies
       run: |
@@ -38,7 +41,7 @@ jobs:
       with:
         molecule_command: test
         molecule_args: -d docker
-        molecule_working_dir: andrelohmann/ansible-role-root_colored_prompt
+        molecule_working_dir: ${{ github.repository }}
       env:
         ANSIBLE_FORCE_COLOR: '1'
 ...
