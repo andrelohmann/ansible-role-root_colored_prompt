@@ -40,9 +40,9 @@ jobs:
         body: ${{ steps.tag_version.outputs.changelog }}
 
     - name: Update Galaxy
-        uses: robertdebock/galaxy-action@1.2.0
-        with:
-          galaxy_api_key: "${{ secrets.GALAXY_API_KEY }}"
+      uses: robertdebock/galaxy-action@1.2.0
+      with:
+        galaxy_api_key: "${{ secrets.GALAXY_API_KEY }}"
 
     # https://github.com/anothrNick/github-tag-action <- might be an option too
 ...
