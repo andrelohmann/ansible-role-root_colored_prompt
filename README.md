@@ -6,21 +6,37 @@
 
 Simple ansible role to switch on the colored prompt for the root user
 
+### Requirements
+
+This role requires ubuntu
+
+### Role Variables
+
+This role does not support any further variables
+
+### Example Playbook
+
+    - hosts: accounts
+      roles:
+         - { role: andrelohmann.root_colored_prompt }
+
+## Role Development
+
 ### Special purpose
 
-This role will exemplarily showcase the perfect development environment for ansible roles.
+This repository supports the following features for the role development:
 
   * yamllint
   * ansible-lint
-  * ansible-playbook ---syntax-check
   * molecule test
-  * gitlab action
+  * github action
+  * auto version-up
   * update ansible-galaxy
   * show build status
-  * auto version-up
   * test within vagrant (for development purose)
   * test with molecule (inside or outside vagrant)
   * test against docker container
+  * test and develop inside vscode
 
 ### Prerequisites
 
@@ -47,19 +63,50 @@ To startup the molecule test containers from within the development container, t
 
 ##### molecule/default/Dockerfile.js
 
-  * used as a template for all platforms defined in molecule/default/molecule.yml
-  * prepares the environments to support systemd services (necessary for some ansible roles acting on systemd)
-  * installs all requirements to run ansible against the derived container
-  * the file is aligned with the attributes of the platforms in molecule/default/molecule.yml
-  * for more information - study the molecule documentation
+  * Used as a template for all platforms defined in molecule/default/molecule.yml
+  * Prepares the environments to support systemd services (necessary for some ansible roles acting on systemd)
+  * Installs all requirements to run ansible against the derived container
+  * The file is aligned with the attributes of the platforms in molecule/default/molecule.yml
+  * For more information - study the molecule documentation
 
 ### Usage
 
-  * change to the root directory of your role and start vscode
+#### Visual Studio Code
+
+  * Change to the root directory of your role and start vscode
+
 ```
 code .
 ```
-  * from within the development container you can use the following run commands
+
+  * From within the development container you can use the following run commands
+
+```
+yamllint .
+ansible-lint .
+molecule create
+molecule test
+```
+
+#### Vagrant + Virtualbox
+
+  * Change to the root directory of your role
+  * Change to the vagrant folder
+  * Start and enter the vagrant machine
+
+```
+vagrant up
+vagrant ssh
+```
+
+  * Change to the role folder
+
+```
+cd /etc/ansible/roles/ansible-role- [tab]
+```
+
+  * Now you can run all tests
+
 ```
 yamllint .
 ansible-lint .
@@ -122,29 +169,6 @@ It's absolutely important, that "BREAKING CHANGE: " is mentioned in the second+ 
   * Open your github role repository
   * Settings -> Secrets and variables -> Actions -> New repository secret
   * Use "GALAXY_API_KEY" as key and the copied galaxy API key as value
-
-## Reusing the template
-
-Reusing the template for new roles:
-
-  * Align the workflows (branches)
-  * Align meta/main.yml
-  * Align molecule/default/converge.yml
-  * Align molecule/default/requirements.yml
-  * Align molecule/default/verify.yml (write ansible verification code to test the results of the role)
-  * Align vagrant/config.yaml (rolename)
-  * Align vagrant/playbook.yml
-  * Align vagrant/README.md
-  * Align vagrant/requirements.yml
-  * Align LICENSE
-  * Align README.md
-  * requirements.yml
-
-## Example Playbook
-
-    - hosts: accounts
-      roles:
-         - { role: andrelohmann.root_colored_prompt }
 
 ## License
 
