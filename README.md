@@ -1,7 +1,6 @@
 # root_colored_prompt
 
-  * ![Last test](https://github.com/andrelohmann/ansible-role-root_colored_prompt/actions/workflows/molecule.yml/badge.svg)
-  * ![Last master test](https://github.com/andrelohmann/ansible-role-root_colored_prompt/actions/workflows/molecule.yml/badge.svg?branch=master)
+  ![Last test](https://github.com/andrelohmann/ansible-role-root_colored_prompt/actions/workflows/molecule.yml/badge.svg)
 
 ## Content
 
