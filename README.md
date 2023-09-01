@@ -116,6 +116,14 @@ BREAKING CHANGE: describing the breaking change
 
 It's absolutely important, that "BREAKING CHANGE: " is mentioned in the second+ line. On single line commit messages, the major version update will be ignored.
 
+#### Add GALAXY_API_KEY secret
+
+  * Authenticate yourself with your github account at https://galaxy.ansible.com/.
+  * Fetch galaxy api key from Preferences -> API Key
+  * Open your github role repository
+  * Settings -> Secrets and variables -> Actions -> New repository secret
+  * Use "GALAXY_API_KEY" as key and the copied galaxy API key as value
+
 ## Reusing the template
 
 Reusing the template for new roles:
