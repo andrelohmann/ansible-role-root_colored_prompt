@@ -2,7 +2,6 @@
 galaxy_info:
   role_name: root_colored_prompt
   author: andrelohmann
-  namespace: andrelohmann
   description: ansible galaxy role to switch on colored prompt for vagrant root user
   company: CloudSails GmbH
 
