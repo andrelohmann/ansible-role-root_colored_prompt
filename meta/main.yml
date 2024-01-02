@@ -3,7 +3,7 @@ galaxy_info:
   role_name: root_colored_prompt
   author: andrelohmann
   description: ansible galaxy role to switch on colored prompt for vagrant root user
-  company: CloudSails GmbH
+  company: CloudCourse GmbH
 
   license: MIT
 
@@ -12,7 +12,6 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - bionic
     - focal
     - jammy
 

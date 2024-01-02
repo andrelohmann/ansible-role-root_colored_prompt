@@ -7,5 +7,5 @@
 
   roles:
   - ansible-role-root_colored_prompt
-  # - andrelohmann.root_colored_prompt
+
 ...
